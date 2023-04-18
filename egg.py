@@ -26,3 +26,13 @@ class Egg():
         y1=self.rect.center[1]
         y2=other.rect.center[1]
         return math.sqrt((x2-x1)**2+(y2-y1)**2)
+        
+    def snakecolide(self,other):
+        if self!=other:
+            if self.rect.right > other.rect.left:
+                if self.rect.left <other.rect.right:
+                    if self.rect.bottom > other.rect.top:
+                        if self.rect.top < other.rect.bottom:
+                            self.living=False
+                            return True
+        return False

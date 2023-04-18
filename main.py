@@ -43,6 +43,12 @@ while True:
             
     for bodypart in snake:
         bodypart.move()
+        
+    player.eggcolide(egg)
+    egg.snakecolide(player)
+    
+    if not egg.living:
+        egg=Egg([random.randint(50,850), random.randint(50,650)])
     
     screen.fill((64, 120, 255))
     screen.blit(bg,bgr)

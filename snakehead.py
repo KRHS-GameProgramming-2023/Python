@@ -62,3 +62,12 @@ class SnakeHead(SnakeBody):
             self.move()
             self.speedx = 0
 
+    def eggcolide(self,other):
+        if self!=other:
+            if self.rect.right > other.rect.left:
+                if self.rect.left <other.rect.right:
+                    if self.rect.bottom > other.rect.top:
+                        if self.rect.top < other.rect.bottom:
+                            
+                                return True
+        return False
