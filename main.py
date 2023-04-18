@@ -31,20 +31,15 @@ while True:
                 player.go("right")
             if event.key==pygame.K_DOWN:
                 player.go("down")
-        if event.type == pygame.KEYUP:
-            if event.key==pygame.K_UP:
-                player.go("sup")
-            if event.key==pygame.K_LEFT:
-                player.go("sleft")
-            if event.key==pygame.K_RIGHT:
-                player.go("sright")
-            if event.key==pygame.K_DOWN:
-                player.go("sdown")
+        
             
-    for bodypart in snake:
+    for i, bodypart in enumerate(snake):
+        if i!=0:
+            bodypart.go(snake[i-1].prevDirection)
         bodypart.move()
         
-    player.eggcolide(egg)
+    if player.eggcolide(egg):
+        snake+=[SnakeBody(player.maxspeed, snake[-1].rect.center)]
     egg.snakecolide(player)
     
     if not egg.living:

@@ -1,16 +1,41 @@
 import pygame, sys,math
 
 class SnakeBody():
-    def __init__(self,speed=[0,0],pos=[50,50]):
+    def __init__(self,speed,pos=[50,50]):
         self.image = pygame.image.load("images/snake body.png")
         self.rect = self.image.get_rect(center = pos) 
-        self.speedx = speed[0]
-        self.speedy = speed[1]
+        self.maxspeed=speed
+        self.speedx = 0
+        self.speedy = 0
         self.speed = [self.speedx, self.speedy]
         self.rad = (self.rect.height/2 + self.rect.width/2)/2
         
         kind = "body"
         
+        self.direction = "sleft"
+        self.prevDirection = "sleft"
+        
+        
+    def go(self,direction):
+        self.prevDirection = self.direction
+        self.direction = direction
+        if direction=="up":
+            self.speedy=-self.maxspeed
+        if direction=="left":
+            self.speedx=-self.maxspeed
+        if direction=="right":
+            self.speedx=self.maxspeed
+        if direction=="down":
+            self.speedy=self.maxspeed
+            
+        if direction=="sup":
+            self.speedy=0
+        if direction=="sleft":
+            self.speedx=0
+        if direction=="sright":
+            self.speedx=0
+        if direction=="sdown":
+            self.speedy=0
     
     def move(self):
         self.speed = [self.speedx, self.speedy]

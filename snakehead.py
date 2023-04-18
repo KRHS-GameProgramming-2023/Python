@@ -8,9 +8,14 @@ class SnakeHead(SnakeBody):
         self.rect = self.image.get_rect(center = pos) 
         self.rad = (self.rect.height/2 + self.rect.width/2)/2
         self.maxspeed=speed
-        kind = "player"
+        self.kind = "player"
+        self.direction = "sleft"
+        self.prevDirection = "sleft"
+        
         
     def go(self,direction):
+        self.prevDirection = self.direction
+        self.direction = direction
         if direction=="up":
             self.speedy=-self.maxspeed
         if direction=="left":
