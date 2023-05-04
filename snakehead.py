@@ -48,21 +48,21 @@ class SnakeHead(SnakeBody):
         width = size[0]
         height = size[1]
         
-        if self.rect.bottom > height:
+        if self.rect.bottom > height-17:
             self.speedy = -self.speedy
             self.move()
             self.speedy = 0
-        if self.rect.top < 0:
+        if self.rect.top < 17:
             self.speedy = -self.speedy
             self.move()
             self.speedy = 0
             
     
-        if self.rect.left < 0:
+        if self.rect.left < 17:
             self.speedx = -self.speedx
             self.move()
             self.speedx = 0
-        if self.rect.right > width:
+        if self.rect.right > width-17:
             self.speedx = -self.speedx 
             self.move()
             self.speedx = 0
