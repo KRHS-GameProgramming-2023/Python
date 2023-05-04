@@ -39,6 +39,7 @@ while True:
             bodypart.setPos(snake[i-1].prevLocation)
         else:
             bodypart.move()
+            bodypart.wallCollide(size)
             
         
     if player.eggcolide(egg):
