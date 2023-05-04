@@ -14,30 +14,15 @@ class SnakeBody():
         
         self.direction = "sleft"
         self.prevDirection = "sleft"
+        self.prevLocation = self.rect.center
         
         
-    def go(self,direction):
-        self.prevDirection = self.direction
-        self.direction = direction
-        if direction=="up":
-            self.speedy=-self.maxspeed
-        if direction=="left":
-            self.speedx=-self.maxspeed
-        if direction=="right":
-            self.speedx=self.maxspeed
-        if direction=="down":
-            self.speedy=self.maxspeed
-            
-        if direction=="sup":
-            self.speedy=0
-        if direction=="sleft":
-            self.speedx=0
-        if direction=="sright":
-            self.speedx=0
-        if direction=="sdown":
-            self.speedy=0
+    def setPos(self, pos):
+        self.prevLocation = self.rect.center
+        self.rect.center = pos
     
     def move(self):
+        self.prevLocation = self.rect.center
         self.speed = [self.speedx, self.speedy]
         self.rect = self.rect.move(self.speed)
         
