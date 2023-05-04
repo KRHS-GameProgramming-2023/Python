@@ -32,11 +32,14 @@ while True:
             if event.key==pygame.K_DOWN:
                 player.go("down")
         
+        
             
     for i, bodypart in enumerate(snake):
         if i!=0:
-            bodypart.go(snake[i-1].prevDirection)
-        bodypart.move()
+            bodypart.setPos(snake[i-1].prevLocation)
+        else:
+            bodypart.move()
+            
         
     if player.eggcolide(egg):
         snake+=[SnakeBody(player.maxspeed, snake[-1].rect.center)]
@@ -48,7 +51,7 @@ while True:
     screen.fill((64, 120, 255))
     screen.blit(bg,bgr)
     screen.blit(egg.image, egg.rect)
-    for bodypart in snake:
+    for bodypart in reversed(snake):
         screen.blit(bodypart.image,bodypart.rect)
     pygame.display.flip()
     clock.tick(60)

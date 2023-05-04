@@ -10,11 +10,10 @@ class SnakeHead(SnakeBody):
         self.maxspeed=speed
         self.kind = "player"
         self.direction = "sleft"
-        self.prevDirection = "sleft"
+        self.prevLocation = self.rect.center
         
         
     def go(self,direction):
-        self.prevDirection = self.direction
         self.direction = direction
         if direction=="up":
             self.speedy=-self.maxspeed
