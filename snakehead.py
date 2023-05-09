@@ -11,7 +11,7 @@ class SnakeHead(SnakeBody):
         self.kind = "player"
         self.direction = "sleft"
         self.prevLocation = self.rect.center
-        
+        self.living=True
         
     def go(self,direction):
         self.direction = direction
@@ -48,23 +48,14 @@ class SnakeHead(SnakeBody):
         height = size[1]
         
         if self.rect.bottom > height-17:
-            self.speedy = -self.speedy
-            self.move()
-            self.speedy = 0
+            self.living=False
         if self.rect.top < 17:
-            self.speedy = -self.speedy
-            self.move()
-            self.speedy = 0
-            
+            self.living=False
     
         if self.rect.left < 17:
-            self.speedx = -self.speedx
-            self.move()
-            self.speedx = 0
+           self.living=False
         if self.rect.right > width-17:
-            self.speedx = -self.speedx 
-            self.move()
-            self.speedx = 0
+            self.living=False
 
     def eggcolide(self,other):
         if self!=other:

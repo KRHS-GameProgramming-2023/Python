@@ -18,7 +18,7 @@ egg=Egg([random.randint(50,850), random.randint(50,650)])
 player = SnakeHead(5,[450,350])
 snake=[player]
 
-while True:
+while player.living:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit();
